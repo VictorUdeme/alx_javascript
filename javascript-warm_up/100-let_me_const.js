@@ -1,3 +1,3 @@
-const originalFile = require('./main.js');
-originalFile.myVar = 333;
-module.exports = originalFile;
+let myVar = 123;
+myVar = 333;
+console.log(myVar);
