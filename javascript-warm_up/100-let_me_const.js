@@ -1,3 +1,3 @@
-let myVar = 89;
-myVar = 333
-console.log(myVar)
+const originalFile = require('./originalFile.js');
+originalFile.myVar = 333;
+module.exports = originalFile;
