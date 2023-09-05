@@ -3,3 +3,5 @@ function executeXTimes(x, theFunction) {
       theFunction();
     }
   }
+
+  module.exports = executeXTimes;
