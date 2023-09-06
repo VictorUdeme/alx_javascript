@@ -1,2 +1,2 @@
-var myVar = 333;
+const myVar = 333;
 console.log(myVar)
