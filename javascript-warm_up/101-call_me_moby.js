@@ -1,6 +1,6 @@
-export function executeXTimes(x, theFunction) {
+function executeXTimes(x, theFunction) {
   for (let i = 0; i < x; i++) {
-    theFunction();
+      theFunction();
   }
-  return;
 }
+
