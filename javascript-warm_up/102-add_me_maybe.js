@@ -3,6 +3,5 @@ let incrementAndCall = (number, theFunction) => {
     theFunction(number);
   };
   
-  module.exports = {
-    incrementAndCall: incrementAndCall
-}
+  module.exports = incrementAndCall
+ 
