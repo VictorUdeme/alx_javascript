@@ -1,7 +1,7 @@
-function executeXTimes(x, theFunction) {
-  for (let i = 0; i < x; i++) {
+module.exports = {
+  executeXTimes: function(x, theFunction) {
+    for (let i = 0; i < x; i++) {
       theFunction();
+    }
   }
-}
-
-export default executeXTimes;
+};
