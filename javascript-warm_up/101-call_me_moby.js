@@ -4,3 +4,4 @@ function executeXTimes(x, theFunction) {
   }
 }
 
+export {executeXTimes};
