@@ -1,7 +1,7 @@
-function callMeMoby(x, theFunction) {
+function CallMeMoby(x, theFunction) {
   for (let i = 0; i < x; i++) {
       theFunction();
   }
 }
 
-module.exports = callMeMoby;
+module.exports = CallMeMoby;
