@@ -1,7 +1,7 @@
-function incrementAndCall(number, theFunction) {
-    let incrementedNumber = number + 1;
-    theFunction(incrementedNumber);
-  }
+let incrementAndCall = (number, theFunction) => {
+    number++;
+    theFunction(number);
+  };
   
-  module.exports = incrementAndCall;
+  export { incrementAndCall };
   
