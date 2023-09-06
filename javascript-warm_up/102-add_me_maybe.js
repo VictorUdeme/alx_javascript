@@ -3,5 +3,4 @@ function incrementAndCall(number, theFunction) {
     theFunction(number);
   }
   
-  export { incrementAndCall };
   
