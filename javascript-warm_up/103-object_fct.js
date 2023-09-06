@@ -1,21 +1,28 @@
 const myObject = {
     type: 'object',
-    value: 12,
-    }
-
-    function  incr() {
-        this.value++
-};
-
-myObject.incr = incr;
-console.log(myObject)
-
-delete myObject.incr;
-
-
-myObject.incr();
-console.log(myObject);
-myObject.incr();
-console.log(myObject);
-myObject.incr();
-console.log(myObject);
+    _value: 12,
+    get value() {
+      return this._value;
+    },
+    set value(newValue) {
+      this._value = newValue;
+    },
+  };
+  
+  myObject.incr = function () {
+    this.value++;
+  };
+  
+  console.log(myObject);
+  myObject.incr();
+  console.log(myObject);
+  myObject.incr();
+  console.log(myObject);
+  myObject.incr();
+  console.log(myObject);
+  
+  
+  
+  
+  
+  
