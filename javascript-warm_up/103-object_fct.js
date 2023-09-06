@@ -7,9 +7,12 @@ const myObject = {
         this.value++
 };
 
-myObject.incr = incr
+myObject.incr = incr;
+console.log(myObject)
 
-console.log(myObject);
+delete myObject.incr;
+
+
 myObject.incr();
 console.log(myObject);
 myObject.incr();
