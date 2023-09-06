@@ -1,2 +1,2 @@
-let myVar = 333;
+var myVar = 333;
 console.log(myVar)
