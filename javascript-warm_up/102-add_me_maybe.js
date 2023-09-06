@@ -1,7 +1,9 @@
-let incrementAndCall = (number, theFunction) => {
+let addMeMaybe = (number, theFunction) => {
     number++;
     theFunction(number);
   };
   
-  module.exports = incrementAndCall
+  module.exports = {
+    addMeMaybe
+  }
  
