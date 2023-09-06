@@ -1,15 +1,9 @@
 const myObject = {
     type: 'object',
-    _value: 12,
-    get value() {
-      return this._value;
-    },
-    set value(newValue) {
-      this._value = newValue;
-    },
+    value: 12
   };
   
-  myObject.incr = function () {
+  myObject.incr = function() {
     this.value++;
   };
   
@@ -20,9 +14,3 @@ const myObject = {
   console.log(myObject);
   myObject.incr();
   console.log(myObject);
-  
-  
-  
-  
-  
-  
