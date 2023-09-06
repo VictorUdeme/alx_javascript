@@ -1,2 +1,2 @@
-let myVar;
-myVar = 333;
+let myVar = 333;
+console.log(myVar)
