@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-const Rectangle = require('./Rectangle'); // Imports the Rectangle class from Rectangle.js
+const Rectangle = require('./4-rectangle'); // Imports the Rectangle class from 4-rectangle.js
 
 class Square extends Rectangle {
   constructor(size) {
