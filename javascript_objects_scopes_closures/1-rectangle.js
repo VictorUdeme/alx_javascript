@@ -4,3 +4,5 @@ class Rectangle{
         this.height = h;
     }
 }
+
+export default Rectangle;
