@@ -2,23 +2,25 @@
 
 class Rectangle {
     constructor(w, h) {
-        if (w <= 0 || h <= 0) {
-            this.width = 0;
-            this.height = 0;
-        } else {
-            this.width = w;
-            this.height = h;
-        }
+      if (w <= 0 || h <= 0 || typeof w !== 'number' || typeof h !== 'number') {
+        // If w or h is equal to 0 or not a positive integer, create an empty object
+        return {};
+      }
+      // Initialize instance attributes width and height
+      this.width = w;
+      this.height = h;
     }
-
+  
     print() {
+      if (this.width === undefined || this.height === undefined) {
+        console.log('Empty Rectangle');
+      } else {
         for (let i = 0; i < this.height; i++) {
-            for (let j = 0; j < this.width; j++) {
-                console.log('X', end='');
-            }
-            console.log();
+          console.log('X'.repeat(this.width));
         }
+      }
     }
-}
+  }
+  
 
 module.exports = Rectangle
