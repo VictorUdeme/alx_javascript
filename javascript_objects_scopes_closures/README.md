@@ -1,0 +1,1 @@
+This is the readme file for javascript_object_scopes_closures tasks
