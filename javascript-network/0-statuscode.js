@@ -1,11 +1,10 @@
 #!/usr/bin/node
 const request = require('request');
-
-request.get('https://intranet.alxswe.com/nonexistent', function (error, response, body) {
-    if (error) {
-        console.log('Error: ', error);
-        return;
+const url ='https://intranet.alxswe.com'
+request.get(url, function(error, response, body) {
+    if (response.statusCode===200) {
+        console.log(`code: ${response.statusCode}`);
+    } else {
+        console.error('Error: ', error)
     }
-    console.log('code:', response.statusCode);
-});
-
+})
