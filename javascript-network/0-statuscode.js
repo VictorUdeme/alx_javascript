@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const request = require('request');
 
-request.get('http://example.com/nonexistent', function (error, response, body) {
+request.get('https://intranet.alxswe.com/nonexistent', function (error, response, body) {
     if (error) {
         console.log('Error: ', error);
         return;
