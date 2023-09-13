@@ -13,7 +13,7 @@ function countMoviesWithCharacter(apiUrl, characterId) {
       const moviesWithCharacter = filmData.results.filter((film) =>
         film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
       );
-      console.log(moviesWithCharacter.length);
+      console.log(`Number of movies with Wedge Antilles (Character ID ${characterId}): ${moviesWithCharacter.length}`);
     }
   });
 }
