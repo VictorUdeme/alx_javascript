@@ -13,7 +13,7 @@ function countMoviesWithCharacter(apiUrl, characterId) {
       const moviesWithCharacter = filmData.results.filter((film) =>
         film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
       );
-      console.log( characterId, moviesWithCharacter.length);
+      console.log( moviesWithCharacter.length);
     }
   });
 }
