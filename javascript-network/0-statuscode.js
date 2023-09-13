@@ -1,10 +1,10 @@
 #!/usr/bin/node
-const request = require('request');
-const url ='https://intranet.alxswe.com'
-request.get(url, function(error, response, body) {
-    if (response.statusCode===200) {
-        console.log(`code: ${response.statusCode}`);
-    } else {
-        throw new Error('Error: ', error)
-    }
-})
+
+
+const request = require('request')
+const url = process.argv[2]
+
+request.get(url)
+.on('response', resp => {
+    console.log("code:", resp.statusCode)
+}) 
