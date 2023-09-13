@@ -13,7 +13,18 @@ function getStarWarsMovieTitle(episodeNumber) {
       console.error('Invalid response:', response.statusCode);
     } else {
       const movieData = JSON.parse(body);
-      console.log(`Episode ${movieData.episode_id}: ${movieData.title}`);
+      console.log(movieData.title);
     }
   });
 }
+
+// Usage: Provide the episode number as a command line argument
+const episodeNumber = process.argv[2];
+
+if (!episodeNumber) {
+  console.error('Please provide an episode number as an argument.');
+} else {
+  getStarWarsMovieTitle(episodeNumber);
+}
+
+
