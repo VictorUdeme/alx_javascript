@@ -1,8 +1,8 @@
 #!/usr/bin/node
 const request = require('request');
 
-// Function to count the number of movies with a specific character
-function countMoviesWithCharacter(apiUrl, characterId) {
+// Function to fetch all films
+function fetchAllFilms(apiUrl) {
   request(apiUrl, (error, response, body) => {
     if (error) {
       console.error('Error:', error);
@@ -10,20 +10,28 @@ function countMoviesWithCharacter(apiUrl, characterId) {
       console.error('Invalid response:', response.statusCode);
     } else {
       const filmData = JSON.parse(body);
-      const moviesWithCharacter = filmData.results.filter((film) =>
-        film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
-      );
-      console.log(`Number of movies with Wedge Antilles (Character ID ${characterId}): ${moviesWithCharacter.length}`);
+      const allFilms = filmData.results;
+      countMoviesWithCharacter(allFilms, characterId);
     }
   });
 }
 
-// Usage: Provide the API URL and character ID as command line arguments
+// Function to count the number of movies with a specific character
+function countMoviesWithCharacter(films, characterId) {
+  const moviesWithCharacter = films.filter((film) =>
+    film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
+  );
+
+  console.log(`Number of movies with Wedge Antilles (Character ID ${characterId}): ${moviesWithCharacter.length}`);
+}
+
+// Usage: Provide the API URL of all films and character ID as command line arguments
 const apiUrl = process.argv[2];
 const characterId = 18;
 
 if (!apiUrl) {
-  console.error('Please provide the API URL as an argument.');
+  console.error('Please provide the API URL of all films as an argument.');
 } else {
-  countMoviesWithCharacter(apiUrl, characterId);
+  fetchAllFilms(apiUrl);
 }
+
