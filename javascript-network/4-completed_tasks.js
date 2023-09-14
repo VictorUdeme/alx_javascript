@@ -35,6 +35,14 @@ request(url, function (error, response, body) {
     }
   });
 
+  // Check if users 1 and 2 exist in the filtered results, and if not, set their counts to 0
+  if (!filteredResults.has(1)) {
+    filteredResults.set(1, 0);
+  }
+  if (!filteredResults.has(2)) {
+    filteredResults.set(2, 0);
+  }
+
   // Print the number of completed tasks for users 1 and 2
   filteredResults.forEach(function (numCompletedTasks, userId) {
     console.log(`User ${userId} completed ${numCompletedTasks} task(s).`);
