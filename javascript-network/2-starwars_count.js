@@ -4,10 +4,24 @@ const request = require('request');
 const url = process.argv[2];
 
 request.get(url, function(error, response, body){
-    const films = JSON.parse(body);
-    const character = films.results.filter((film) => 
-        film.characters.some((characterUrl)=> character.endwith('/18/')));
+    if (error) {
+        console.error("Error:", error);
+        return;
+    }
 
-    const count = character.length;
-    console.log(count);
+    if (response.statusCode !== 200) {
+        console.error("Status code:", response.statusCode);
+        return;
+    }
+
+    try {
+        const films = JSON.parse(body);
+        const characters = films.results.flatMap(film => film.characters);
+
+        const count = characters.filter(characterUrl => characterUrl.endsWith('/18/')).length;
+        console.log(count);
+    } catch (parseError) {
+        console.error("JSON parse error:", parseError);
+    }
 });
+
