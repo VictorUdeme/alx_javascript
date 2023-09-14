@@ -13,9 +13,7 @@ request.get(url, { encoding: 'utf-8' }, (error, response, body) => {
     fs.writeFile(file_path, body, { encoding: 'utf-8' }, (error) => {
       if (error) {
         console.error(error);
-      } else {
-        console.log(body);
-      }
+      } 
     });
   }
 });
