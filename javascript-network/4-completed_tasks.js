@@ -27,8 +27,16 @@ request(url, function (error, response, body) {
     }
   });
 
-  // Print the number of completed tasks for each user
+  // Filter the results to include only users 1 and 2
+  const filteredResults = new Map();
   completedTasksByUser.forEach(function (numCompletedTasks, userId) {
+    if (userId === 1 || userId === 2) {
+      filteredResults.set(userId, numCompletedTasks);
+    }
+  });
+
+  // Print the number of completed tasks for users 1 and 2
+  filteredResults.forEach(function (numCompletedTasks, userId) {
     console.log(`User ${userId} completed ${numCompletedTasks} task(s).`);
   });
 });
