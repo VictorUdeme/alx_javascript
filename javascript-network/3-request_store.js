@@ -22,6 +22,15 @@ request(url, (error, response, body) => {
             process.exit(1);
         }
 
+        const contentLength = body.length;
         console.log(body); // Print the webpage content
+        console.log(`(${contentLength} chars long)`);
+
+        // Check if stderr is empty
+        if (process.stderr._writableState.length === 0) {
+            console.log('[stderr]: [Anything]');
+        } else {
+            console.error('[stderr]:', process.stderr.read().toString().trim());
+        }
     });
 });
