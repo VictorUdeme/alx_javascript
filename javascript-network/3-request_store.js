@@ -11,7 +11,7 @@ request(url, function(error, response, body) {
     console.error(error);
   }
   else {
-    
+    // Remove leading and trailing whitespace, including newline characters
     body = body.trim();
     
     fs.writeFile(file_path, body, 'utf-8', function(error) {
@@ -19,8 +19,9 @@ request(url, function(error, response, body) {
         console.error(error);
       }
       else {
-        console.log(body); // Print the content of the saved file
+        console.log(file_path);
       }
     });
   }
 });
+
