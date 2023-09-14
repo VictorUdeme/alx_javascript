@@ -21,6 +21,7 @@ request(url, (error, response, body) => {
             console.error('Error writing to file:', err);
             process.exit(1);
         }
-        console.log(`Webpage content has been saved to ${outputFilePath}`);
+
+        console.log(body); // Print the webpage content
     });
 });
