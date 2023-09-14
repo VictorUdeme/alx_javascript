@@ -1,29 +1,25 @@
 #!/usr/bin/node
 
-const request = require('request-promise');
+const request = require('request');
 
+// Get the movie ID from the user
 const movieId = process.argv[2];
 
-if (!movieId) {
-  console.error("Please provide a movie ID as a command-line argument (e.g., 3 for 'Return of the Jedi').");
-  process.exit(1);
-}
+// Make a GET request to the Star Wars API to retrieve the movie data
+request(`https://swapi.dev/api/films/${movieId}`, function (error, response, body) {
+  if (error) {
+    console.error(error);
+  } else {
+    // Parse the JSON response
+    const movie = JSON.parse(body);
 
-const apiUrl = 'https://swapi.dev/api';
+    // Get the characters from the movie
+    const characters = movie.characters;
 
-async function printCharactersForMovie(movieId) {
-  try {
-    const movieData = await request.get(`${apiUrl}/films/${movieId}/`, { json: true });
-    console.log(`Characters in ${movieData.title}:`);
-    
-    const charactersData = await Promise.all(movieData.characters.map(characterUrl => request.get(characterUrl, { json: true })));
-
-    charactersData.forEach(characterData => {
-      console.log(characterData.name);
-    });
-  } catch (err) {
-    console.error("Error:", err);
+    // Iterate over the characters and print their names
+    for (const character of characters) {
+      console.log(character.name);
+    }
   }
-}
+});
 
-printCharactersForMovie(movieId);
