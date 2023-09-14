@@ -1,23 +1,46 @@
-#!/usr/bin/node
-
 const request = require('request');
 
-const movieId = prompt("Enter the Movie ID: ");
-const url = `https://swapi.dev/api/films/${movieId}/`;
+function getMovieCharacters(movieId) {
+  const apiUrl = `https://swapi.dev/api/films/${movieId}/`;
 
-request(url, (error, response, body) => {
-  if (!error && response.statusCode === 200) {
-    const data = JSON.parse(body);
-    const characters = data.characters;
-    characters.forEach(characterUrl => {
-      request(characterUrl, (error, response, body) => {
-        if (!error && response.statusCode === 200) {
-          const characterData = JSON.parse(body);
-          console.log(characterData.name);
+  request(apiUrl, (error, response, body) => {
+    if (error) {
+      console.error(`Error fetching movie data: ${error}`);
+      return;
+    }
+
+    if (response.statusCode !== 200) {
+      console.error(`Error: ${response.statusCode} - ${response.statusMessage}`);
+      return;
+    }
+
+    const movieData = JSON.parse(body);
+    const characters = movieData.characters;
+
+    // Print each character name
+    characters.forEach(async (characterUrl) => {
+      request(characterUrl, (charError, charResponse, charBody) => {
+        if (charError) {
+          console.error(`Error fetching character data: ${charError}`);
+          return;
         }
+
+        if (charResponse.statusCode !== 200) {
+          console.error(`Error: ${charResponse.statusCode} - ${charResponse.statusMessage}`);
+          return;
+        }
+
+        const characterData = JSON.parse(charBody);
+        console.log(characterData.name);
       });
     });
-  } else {
-    console.log("Error fetching movie data.");
-  }
-});
+  });
+}
+
+const movieId = process.argv[2]; // Get the movie ID from the command line argument
+if (!movieId) {
+  console.error('Please provide a movie ID as an argument.');
+  process.exit(1);
+}
+
+getMovieCharacters(movieId);
