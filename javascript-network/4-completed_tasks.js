@@ -1,36 +1,20 @@
-const request = require("request");
+#!/usr/bin/node
 
-// Define the API URL
-const url = "https://jsonplaceholder.typicode.com/todos";
+const request = require('request');
 
-// Make a GET request to the API
-request(url, function (error, response, body) {
-  if (error) {
-    console.error(error);
-    return;
-  }
+const url = process.argv[2];
 
-  // Parse the JSON response into a list of tasks
-  const tasks = JSON.parse(body);
+request.get(url, function(error, response, body){
+    const users = JSON.parse(body);
+    const task_completed = {};
+    users.foreach((user) => {
+        if (user.completed){
+            task_completed[user.userId];
+            task_completed[user.userId]++;
 
-  // Create an object to store the number of completed tasks for each user
-  const completedTasksByUser = {};
-
-  // Loop through each task
-  tasks.forEach(function (task) {
-    // Check if the task is completed
-    if (task.completed) {
-      // Get the user ID for the task
-      const userId = task.userId;
-      // Increment the number of completed tasks for the user
-      if (!completedTasksByUser[userId]) {
-        completedTasksByUser[userId] = 1;
-      } else {
-        completedTasksByUser[userId]++;
-      }
-    }
-  });
-
-  // Print the number of completed tasks for users 1 and 2
-  console.log(completedTasksByUser);
+        } else {
+            task_completed[user.userId] = 1;
+        }
+    });
+    console.log(task_completed);
 });
