@@ -16,9 +16,21 @@ request(`https://swapi.dev/api/films/${movieId}`, function (error, response, bod
     // Get the characters from the movie
     const characters = movie.characters;
 
-    // Iterate over the characters and print their names
-    for (const character of characters) {
-      console.log(character.name);
+    if (characters.length === 0) {
+      console.log("No characters found");
+    } else {
+      // Iterate over the characters and print their names
+      for (const character of characters) {
+        request(character, function (error, response, body) {
+          if (error) {
+            console.error(error);
+          } else {
+            const characterData = JSON.parse(body);
+            console.log(characterData.name);
+          }
+        });
+      }
+      console.log("OK");
     }
   }
 });
