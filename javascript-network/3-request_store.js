@@ -19,15 +19,7 @@ request(url, function(error, response, body) {
         console.error(error);
       }
       else {
-        // Read the saved file and print its content
-        fs.readFile(file_path, 'utf-8', function(readError, data) {
-          if (readError) {
-            console.error(readError);
-          }
-          else {
-            console.log(data);
-          }
-        });
+        console.log(body); // Print the content of the saved file
       }
     });
   }
