@@ -1,8 +1,7 @@
 #!/usr/bin/node
 
-const request = require('request');
+const request = require('request-promise');
 
-// Ensure a movie ID is provided as a command-line argument
 const movieId = process.argv[2];
 
 if (!movieId) {
@@ -10,48 +9,21 @@ if (!movieId) {
   process.exit(1);
 }
 
-// Define the Star Wars API base URL
 const apiUrl = 'https://swapi.dev/api';
 
-// Function to fetch and print characters for a given movie
-function printCharactersForMovie(movieId) {
-  const movieUrl = `${apiUrl}/films/${movieId}/`;
+async function printCharactersForMovie(movieId) {
+  try {
+    const movieData = await request.get(`${apiUrl}/films/${movieId}/`, { json: true });
+    console.log(`Characters in ${movieData.title}:`);
+    
+    const charactersData = await Promise.all(movieData.characters.map(characterUrl => request.get(characterUrl, { json: true })));
 
-  request.get(movieUrl, function (error, response, body) {
-    if (error) {
-      console.error("Error:", error);
-      return;
-    }
-
-    if (response.statusCode !== 200) {
-      console.error("HTTP Status Code:", response.statusCode);
-      return;
-    }
-
-    try {
-      const movieData = JSON.parse(body);
-      console.log(`Characters in ${movieData.title}:`);
-      movieData.characters.forEach((characterUrl) => {
-        request.get(characterUrl, function (charError, charResponse, charBody) {
-          if (charError) {
-            console.error("Error fetching character:", charError);
-            return;
-          }
-
-          if (charResponse.statusCode !== 200) {
-            console.error("HTTP Status Code:", charResponse.statusCode);
-            return;
-          }
-
-          const characterData = JSON.parse(charBody);
-          console.log(characterData.name);
-        });
-      });
-    } catch (err) {
-      console.error("Error parsing JSON:", err);
-    }
-  });
+    charactersData.forEach(characterData => {
+      console.log(characterData.name);
+    });
+  } catch (err) {
+    console.error("Error:", err);
+  }
 }
 
-// Call the function to fetch and print characters for the specified movie
 printCharactersForMovie(movieId);
