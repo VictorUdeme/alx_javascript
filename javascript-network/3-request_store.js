@@ -22,9 +22,8 @@ request(url, (error, response, body) => {
             process.exit(1);
         }
 
-        const contentLength = body.length;
-        console.log(body); // Print the webpage content
-        console.log(`(${contentLength} chars long)`);
+        // Print only the webpage content without additional messages
+        console.log(body);
 
         // Check if stderr is empty
         if (process.stderr._writableState.length === 0) {
