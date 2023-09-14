@@ -17,7 +17,14 @@ request.get({ url, encoding: null }, function(error, response, body) {
       if (error) {
         console.error(error);
       } else {
-        console.log(`Content saved to ${file_path}`);
+        // Read the saved file and print its content
+        fs.readFile(file_path, 'utf-8', function(error, data) {
+          if (error) {
+            console.error(error);
+          } else {
+            console.log(data);
+          }
+        });
       }
     });
   } else {
