@@ -1,5 +1,6 @@
 #!/usr/bin/node
 
+
 const fs = require('fs');
 const request = require('request');
 
@@ -11,6 +12,9 @@ request(url, function(error, response, body) {
     console.error(error);
   }
   else {
+    
+    body = body.trim();
+    
     fs.writeFile(file_path, body, 'utf-8', function(error) {
       if (error) {
         console.error(error);
@@ -21,3 +25,4 @@ request(url, function(error, response, body) {
     });
   }
 });
+
