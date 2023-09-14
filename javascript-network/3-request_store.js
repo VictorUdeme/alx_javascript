@@ -16,7 +16,7 @@ request(url, function(error, response, body) {
         console.error(error);
       }
       else {
-        console.log(`Webpage content saved to ${file_path}`);
+        console.log(file_path);
       }
     });
   }
