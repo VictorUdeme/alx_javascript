@@ -1,6 +1,5 @@
 #!/usr/bin/node
 
-
 const fs = require('fs');
 const request = require('request');
 
@@ -20,9 +19,16 @@ request(url, function(error, response, body) {
         console.error(error);
       }
       else {
-        console.log(file_path);
+        // Read the saved file and print its content
+        fs.readFile(file_path, 'utf-8', function(readError, data) {
+          if (readError) {
+            console.error(readError);
+          }
+          else {
+            console.log(data);
+          }
+        });
       }
     });
   }
 });
-
