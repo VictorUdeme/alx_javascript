@@ -1,0 +1,1 @@
+This is the readme for Cookies and local storage task
