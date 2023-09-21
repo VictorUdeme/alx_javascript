@@ -39,9 +39,9 @@ console.log(harry.getScore());
 // An instance for Draco
 
 let draco = Object.create(studentHogwarts);
-harry.setName('Draco');
-harry.rewardStudent();
-harry.penalizeStudent();
-harry.penalizeStudent();
-harry.penalizeStudent();
+draco.rewardStudent();
+draco.setName('Draco');
+draco.penalizeStudent();
+draco.penalizeStudent();
+draco.penalizeStudent();
 console.log(draco.getScore());
