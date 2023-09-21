@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+</head>
+<body>
+<input type="text" id="firstname" placeholder="First name">
+<input type="email" id="email" placeholder="Email">
+<button onclick="setCookies()">Log me in</button>
+<button onclick="showCookies()">Show the cookies</button>
+
+<script>
+function setCookies() {
+  let firstname = document.getElementById("firstname").value;
+  let email = document.getElementById("email").value;
+
+  // Create a Date object for 10 days from now
+  let expirationDate = new Date();
+  expirationDate.setDate(expirationDate.getDate() + 10);
+
+  // Set cookies with an expiration date
+  document.cookie = "firstname=" + firstname + "; expires=" + expirationDate.toUTCString();
+  document.cookie = "email=" + email + "; expires=" + expirationDate.toUTCString();
+}
+
+function showCookies() {
+  let emailCookie = getCookie("email");
+  let firstnameCookie = getCookie("firstname");
+
+  // Create a paragraph element
+  let p = document.createElement("p");
+  p.innerHTML = "Email: " + emailCookie + " - Firstname: " + firstnameCookie;
+
+  // Append the paragraph to the body
+  document.body.appendChild(p);
+}
+
+function getCookie(name) {
+  let cookies = document.cookie.split(";");
+
+  for (let i = 0; i < cookies.length; i++) {
+    let cookie = cookies[i].trim(); // Remove leading/trailing spaces
+    let cookieParts = cookie.split("=");
+    let cookieName = cookieParts[0];
+    let cookieValue = cookieParts[1];
+    
+    if (cookieName === name) {
+      return cookieValue;
+    }
+  }
+
+  return ""; // Returns an empty string if the cookie is not found
+}
+</script>
+</body>
+</html>
