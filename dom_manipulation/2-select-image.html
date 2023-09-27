@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Modifying Elements</title>
+  <style>
+    img {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <img id="myImage" src="https://picsum.photos/200/300" alt="My Image">
+
+  <!-- This script select the image element and stores it in a var -->
+
+  <script>
+
+    let imgContainer = document.getElementById("myImage");
+
+    imgContainer.src = "https://picsum.photos/200/301";
+    imgContainer.alt = "New image";
+    imgContainer.style.border = "2px solid red";
+  </script>
+</body>
+</html>
