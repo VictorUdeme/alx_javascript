@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Creating and Removing Elements</title>
+</head>
+<body>
+  <div id="container"></div>
+
+  <script>
+    // Select the container element by its id
+    let container = document.getElementById("container");
+
+    // Create a new <p> element
+    let newPara = document.createElement("p");
+    newPara.textContent = "New paragraph";
+
+    // Append the new paragraph to the container
+    container.appendChild(newPara);
+
+    // Create a button element
+    let btn = document.createElement("button");
+    btn.textContent = "Remove Paragraph";
+
+    // Append the button to the container
+    container.appendChild(btn);
+
+    // Initialize a flag to track paragraph visibility
+    let hidden = false;
+
+    // Add a click event handler to toggle paragraph visibility
+    btn.onclick = function() {
+        if (hidden) {
+            // If hidden, show the paragraph
+            newPara.style.display = "block";
+            hidden = false;
+        } else {
+            // If visible, hide the paragraph
+            newPara.style.display = "none";
+            hidden = true;
+        }
+    }
+  </script>
+</body>
+</html>
