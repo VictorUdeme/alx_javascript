@@ -11,14 +11,19 @@
 <body>
   <img id="myImage" src="https://picsum.photos/200/300" alt="My Image">
 
-  <!-- This script select the image element and stores it in a var -->
+  <!-- The script -->
 
   <script>
-
+    // select image by its id
     let imgContainer = document.getElementById("myImage");
-
+    
+    // modifies the content of the src
     imgContainer.src = "https://picsum.photos/200/301";
+    
+    // modifies the "alt" text
     imgContainer.alt = "New image";
+    
+    // adds borer + color around the image
     imgContainer.style.border = "2px solid red";
   </script>
 </body>
