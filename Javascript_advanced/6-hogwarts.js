@@ -1,34 +1,29 @@
-let studentHogwarts = (function () {
-    // The Private Vars
+function StudentHogwarts() {
     let privateScore = 0;
     let name = null;
 
-    // The private method
     function changeScoreBy(points) {
-        privateScore +=points;
+        privateScore += points;
     }
 
-    return {
-        setName: function (newName) {
-            name = newName;
-        },
-        rewardStudent: function () {
-            changeScoreBy(1);
-        },
-
-        penalizeStudent: function () {
-            changeScoreBy(-1);
-        },
-
-        getScore: function () {
-            return `${name}: ${privateScore}`;
-        },
+    this.setName = function (newName) {
+        name = newName;
     };
-}) ();
 
-// An instance for Harry
+    this.rewardStudent = function () {
+        changeScoreBy(1);
+    };
 
-let harry = Object.create(studentHogwarts);
+    this.penalizeStudent = function () {
+        changeScoreBy(-1);
+    };
+
+    this.getScore = function () {
+        return `${name}: ${privateScore}`;
+    };
+}
+
+let harry = new StudentHogwarts();
 harry.setName('Harry');
 harry.rewardStudent();
 harry.rewardStudent();
@@ -36,11 +31,9 @@ harry.rewardStudent();
 harry.rewardStudent();
 console.log(harry.getScore());
 
-// An instance for Draco
-
-let draco = Object.create(studentHogwarts);
-draco.rewardStudent();
+let draco = new StudentHogwarts();
 draco.setName('Draco');
+draco.rewardStudent();
 draco.penalizeStudent();
 draco.penalizeStudent();
 draco.penalizeStudent();
