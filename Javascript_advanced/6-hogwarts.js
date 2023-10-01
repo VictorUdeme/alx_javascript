@@ -1,7 +1,10 @@
 function StudentHogwarts() {
+    
+    // The provate vars
     let privateScore = 0;
     let name = null;
 
+    // The private methods
     function changeScoreBy(points) {
         privateScore += points;
     }
@@ -23,6 +26,7 @@ function StudentHogwarts() {
     };
 }
 
+// An instance for Harry
 let harry = new StudentHogwarts();
 harry.setName('Harry');
 harry.rewardStudent();
@@ -31,6 +35,7 @@ harry.rewardStudent();
 harry.rewardStudent();
 console.log(harry.getScore());
 
+// An instance for Draco
 let draco = new StudentHogwarts();
 draco.setName('Draco');
 draco.rewardStudent();
