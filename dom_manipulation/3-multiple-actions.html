@@ -19,7 +19,7 @@
 
     // Create a button element
     let btn = document.createElement("button");
-    btn.textContent = "Remove Paragraph";
+    btn.textContent = "Toggle Paragraph";
 
     // Append the button to the container
     container.appendChild(btn);
@@ -32,10 +32,12 @@
         if (hidden) {
             // If hidden, show the paragraph
             newPara.style.display = "block";
+            btn.textContent = "Remove Paragraph"
             hidden = false;
         } else {
             // If visible, hide the paragraph
             newPara.style.display = "none";
+            btn.textContent = "Add Paragraph"
             hidden = true;
         }
     }
