@@ -4,9 +4,9 @@ document.getElementById('passwordForm').addEventListener('submit', function(even
 });
 
 function validatePassword() {
-    var password = document.getElementById('password').value;
-    var error = document.getElementById('error');
-    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const password = document.getElementById('password').value;
+    const error = document.getElementById('error');
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (regex.test(password)) {
         error.textContent = '';
